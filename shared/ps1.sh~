@@ -1,0 +1,28 @@
+
+function shared_workdir {
+  d=$PWD
+  d=$(echo $d | sed "s/^\/home\/${USER}/~/")
+
+  echo $d
+}
+
+function local_ps1_suffix {
+  true
+}
+
+function local_workdir {
+  workdir
+}
+
+function ps1 {
+  echo -n ${USER}
+  echo -n '@'
+  echo -n $HOSTNAME | sed 's/\..*$//'
+  echo -n ':$(local_workdir)'
+  echo -n '$(local_ps1_suffix)'
+  echo -n '$ '
+}
+
+export PS1="$(ps1)"
+
+source 

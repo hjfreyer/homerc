@@ -1,0 +1,63 @@
+;; My awesome emacs config.
+(setq HOMERC (getenv "HOMERC"))
+
+(add-to-list 'load-path (concat HOMERC "/shared/emacs.lib/"))
+(add-to-list 'load-path (substitute-in-file-name "$HOMERC/local/emacs.lib/"))
+
+(require 'java-mode-indent-annotations)
+
+(require 'show-wspace)
+(add-hook 'font-lock-mode-hook 'show-ws-highlight-tabs)
+(add-hook 'font-lock-mode-hook 'show-ws-highlight-trailing-whitespace)
+
+(require 'column-marker)
+(add-hook 'font-lock-mode-hook
+          (lambda () (interactive) (column-marker-1 80)))
+
+(add-to-list 'load-path "PATH CONTAINING go-mode-load.el" t)
+(require 'go-mode-load)
+
+;; Kill trailing whitespace.
+(add-hook 'font-lock-mode-hook
+          (lambda () (add-hook 'write-contents-hooks
+                               'delete-trailing-whitespace t)))
+
+;; Java annotations fix.
+(add-hook 'java-mode-hook 'java-mode-indent-annotations-setup)
+
+;; Toolbars are for jerks.
+(tool-bar-mode -1)
+(scroll-bar-mode -1)
+(show-paren-mode 1)
+
+;; Shrink font
+(set-face-attribute 'default nil :height 100)
+
+;; Should-really-be-built-in keybindings.
+(global-set-key (kbd "C-c C-SPC") 'comment-or-uncomment-region)
+
+(defun set-local (name value)
+  ()
+  (set (make-local-variable name) value)
+  )
+
+;; Go is special.
+(add-hook 'go-mode-hook
+          (lambda ()
+            (setq fill-column 80)
+            (set-local 'tab-width 2)
+            (set (make-local-variable 'whitespace-style) '(face trailing))
+            ))
+
+(load-file (substitute-in-file-name "$HOMERC/local/emacs.el"))
+
+(custom-set-variables
+  ;; custom-set-variables was added by Custom -- don't edit or cut/paste it!
+  ;; Your init file should contain only one such instance.
+ '(javascript-indent-level 2)
+ '(javascript-expr-indent-offset 2)
+ '(compile-command "blaze test //repository/extraction/...")
+ '(fill-column 80)
+ '(indent-tabs-mode nil)
+ '(c-basic-offset 2)
+ '(standard-indent 2))
