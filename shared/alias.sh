@@ -1,5 +1,4 @@
 
-alias ls="ls --color"
 alias ll="ls -lah"
 alias cd="pushd"
 alias pd="popd"

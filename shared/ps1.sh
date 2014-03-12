@@ -2,6 +2,7 @@
 function shared_workdir {
     d=$PWD
     d=$(echo $d | sed "s/^\/home\/${USER}/~/")
+    d=$(echo $d | sed "s/^\/Users\/${USER}/~/")
 
     echo $d
 }
@@ -13,7 +14,7 @@ function shared_ps1_suffix {
 function ps1 {
     echo -n ${USER}
     echo -n '@'
-    echo -n $HOSTNAME | sed 's/\..*$//'
+    echo -n $(echo $HOSTNAME | sed 's/\..*$//')
     echo -n ':$(local_workdir)'
     echo -n '$(local_ps1_suffix)'
     echo -n '$ '
