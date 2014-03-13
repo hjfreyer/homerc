@@ -3,8 +3,8 @@
 
 (require 'package)
 (add-to-list 'package-archives
-	     '("marmalade" .
-	       "http://marmalade-repo.org/packages/"))
+             '("marmalade" .
+               "http://marmalade-repo.org/packages/"))
 (package-initialize)
 
 ;; Kill trailing whitespace.
@@ -18,9 +18,9 @@
 (show-paren-mode 1)
 
 (require 'whitespace)
-(setq whitespace-style 
-      '(face tabs trailing lines-tail space-before-tab newline 
-	     indentation empty space-after-tab))
+(setq whitespace-style
+      '(face tabs trailing lines-tail space-before-tab newline
+             indentation empty space-after-tab))
 (setq whitespace-global-modes '(not go-mode))
 (global-whitespace-mode 1)
 
@@ -32,5 +32,13 @@
 (add-hook 'go-mode-hook
           (lambda ()
             (set-local 'tab-width 2)
-	    (whitespace-toggle-options '(tabs lines-tail))
+            (whitespace-toggle-options '(tabs lines-tail))
             ))
+
+;; Java is special.
+(add-hook 'java-mode-hook
+          (lambda ()
+            (set-local 'fill-column 100)
+            ))
+
+(load-file (substitute-in-file-name "$HOMERC/local/emacs.el"))

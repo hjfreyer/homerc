@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# If not running interactively, don't do anything
+[ -z "$PS1" ] && return
+
 export EDITOR="emacs -nw --no-init-file"
 export PATH="$HOMERC/shared/bin/:$HOMERC/local/bin/:$PATH"
 export HISTCONTROL=ignoredups
