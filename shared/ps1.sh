@@ -12,8 +12,6 @@ function shared_ps1_suffix {
 }
 
 function ps1 {
-    echo -n ${USER}
-    echo -n '@'
     echo -n $(echo $HOSTNAME | sed 's/\..*$//')
     echo -n ':$(local_workdir)'
     echo -n '$(local_ps1_suffix)'
