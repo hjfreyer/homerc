@@ -40,5 +40,3 @@
           (lambda ()
             (set-local 'fill-column 100)
             ))
-
-(load-file (substitute-in-file-name "$HOMERC/local/emacs.el"))

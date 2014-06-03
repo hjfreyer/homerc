@@ -12,8 +12,6 @@ export GOPATH="$HOME/go:$GOPATH"
 source $HOMERC/shared/alias.sh
 source $HOMERC/shared/ps1.sh
 
-source $HOMERC/local/bashrc.sh
-
 # Some functions.
 
 function rsed {

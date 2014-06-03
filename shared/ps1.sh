@@ -1,24 +1,20 @@
 
-function shared_workdir {
-    d=$PWD
-    d=$(echo $d | sed "s/^\/home\/${USER}/~/")
-    d=$(echo $d | sed "s/^\/Users\/${USER}/~/")
-
-    echo $d
+function ps1_hostname {
+    echo -n $HOSTNAME | sed 's/\..*$//'
 }
 
-function shared_ps1_suffix {
-    true
+function ps1_workdir {
+    echo -n $PWD | \
+	sed -e "s/^\/home\/${USER}/~/" \
+	    -e "s/^\/Users\/${USER}/~/"
 }
 
 function ps1 {
-    echo -n $(echo $HOSTNAME | sed 's/\..*$//')
-    echo -n ':$(local_workdir)'
-    echo -n '$(local_ps1_suffix)'
+    ps1_hostname
+    echo -n ':'
+    ps1_workdir
     echo -n '$ '
 }
 
-source $HOMERC/local/ps1.sh
-
-export PS1="$(ps1)"
+export PS1='$(ps1)'
 
