@@ -1,12 +1,11 @@
 
 function ps1_hostname {
-    echo -n $HOSTNAME | sed 's/\..*$//'
+    echo -n $HOSTNAME | perl -pe 's/\..*$//'
 }
 
 function ps1_workdir {
     echo -n $PWD | \
-	sed -e "s/^\/home\/${USER}/~/" \
-	    -e "s/^\/Users\/${USER}/~/"
+	perl -p -e "s/^\/home\/${USER}/~/; s/^\/Users\/${USER}/~/"
 }
 
 function ps1 {
