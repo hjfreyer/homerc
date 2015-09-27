@@ -4,11 +4,13 @@
 [ -z "$PS1" ] && return
 
 export EDITOR="emacs -nw --no-init-file"
-export PATH="$HOME/.bin:$HOMERC/shared/bin:$PATH"
+export PATH="$HOME/.bin:$PATH"
 export HISTCONTROL=ignoredups
 
-source $HOMERC/shared/alias.sh
-source $HOMERC/shared/ps1.sh
+export GOPATH="$HOME/go"
+export PATH="$HOME/go/bin:$PATH"
+
+export PS1='$(ps1)'
 
 # Some functions.
 
