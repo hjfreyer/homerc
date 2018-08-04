@@ -17,3 +17,9 @@ export PS1='$(ps1)'
 function rsed {
   find -type f -exec sed -i "$@" {} +
 }
+
+function ps1 {
+  echo -n "${HOSTNAME%.*}:"
+  echo -n "${PWD/$HOME/~}"
+  echo -n '$ '
+}
