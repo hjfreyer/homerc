@@ -24,6 +24,6 @@ function gssh {
     local PORTS=( 3000 3111 8080 8081 9229 )
     local CMD=$(mk_gssh_cmd $@)
     echo $CMD
-    exec $CMD
+    $CMD
 }
 
