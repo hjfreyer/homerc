@@ -11,20 +11,3 @@ alias gcam="git commit -a -m 'commit'"
 alias stgs="stg series"
 
 alias e=$EDITOR
-
-function mk_gssh_cmd {
-    echo -n "gcloud alpha cloud-shell ssh --ssh-flag=-E/dev/null "
-    for p in "${PORTS[@]}"; do
-        echo -n "--ssh-flag=-L${p}:localhost:${p} "
-    done
-    
-    echo $@
-}
-
-function gssh {
-    local PORTS=( 3000 3111 8080 8081 9229 )
-    local CMD=$(mk_gssh_cmd $@)
-    echo $CMD
-    $CMD
-}
-

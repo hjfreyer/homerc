@@ -1,0 +1,5 @@
+#!/bin/bash -e
+
+IP=$(gcloud cloud-shell get-mount-command dummy | sed 's/^.*yt@\(.*\):.*$/\1/')
+echo "Machine IP: $IP"
+sed -i 's/^.* # REPLACE:CLOUD_SHELL$/  HostName '"$IP"' # REPLACE:CLOUD_SHELL/' .ssh/config 
