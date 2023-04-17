@@ -1,0 +1,3 @@
+#!/bin/bash
+
+sudo netstat -nlp|jq --arg port "$1" -R -r 'split(" ") | map(select(. != "")) | select(.[3] | endswith(":" + $port))[6] | split("/")[0]' | uniq
