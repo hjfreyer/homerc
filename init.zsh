@@ -78,7 +78,9 @@ source $ZSH/oh-my-zsh.sh
 # User configuration
 
 export PATH="$HOME/.local/bin:$PATH"
+export PATH="$SCRIPT_DIR/bin:$PATH"
 
 alias rebash="exec $SHELL"
 alias stgr="stg refresh"
 alias stgs="stg series"
+
