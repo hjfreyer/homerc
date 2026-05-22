@@ -1,3 +1,3 @@
-# hjfreyer's bashrc
+# hjfreyer's homedir configs
 
-No fancy install script anymore. Just source `bashrc.sh` in this directory.
+Run `install.sh` to set up symlinks.

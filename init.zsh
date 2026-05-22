@@ -1,21 +1,8 @@
 
-local SCRIPT_DIR=$(dirname ${(%):-%x})
+local HOMERC_DIR="$HOME/.homerc/common"
 
 # Path to your oh-my-zsh installation.
-export ZSH="$SCRIPT_DIR/oh-my-zsh"
-
-# Set name of the theme to load --- if set to "random", it will
-# load a random theme each time oh-my-zsh is loaded, in which case,
-# to know which specific one was loaded, run: echo $RANDOM_THEME
-# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-# ZSH_THEME="flazz"
-ZSH_THEME="powerlevel10k/powerlevel10k"
-
-# Set list of themes to pick from when loading at random
-# Setting this variable when ZSH_THEME=random will cause zsh to load
-# a theme from this variable instead of looking in $ZSH/themes/
-# If set to an empty array, this variable will have no effect.
-# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
+export ZSH="$HOME/.oh-my-zsh"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -63,24 +50,20 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 # see 'man strftime' for details.
 # HIST_STAMPS="mm/dd/yyyy"
 
-# Would you like to use another custom folder than $ZSH/custom?
-ZSH_CUSTOM="$SCRIPT_DIR/oh-my-zsh-custom"
-
 # Which plugins would you like to load?
 # Standard plugins can be found in $ZSH/plugins/
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(git jj)
 
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
-export PATH="$HOME/.local/bin:$PATH"
-export PATH="$SCRIPT_DIR/bin:$PATH"
+fpath+=($HOMERC_DIR/pure)
 
-alias rebash="exec $SHELL"
-alias stgr="stg refresh"
-alias stgs="stg series"
+autoload -U promptinit; promptinit
+prompt pure
 
+eval "$(~/.local/bin/mise activate zsh)"
