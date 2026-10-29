@@ -22,12 +22,8 @@ export PATH="$HOME/.local/bin:$PATH"
 
 eval "$(mise activate zsh)"
 
-
 # Set up fzf key bindings and fuzzy completion
 source <(fzf --zsh)
-
-# Set up zoxide to move between folders efficiently
-eval "$(zoxide init zsh)"
 
 # Set up the Starship prompt
 eval "$(starship init zsh)"
