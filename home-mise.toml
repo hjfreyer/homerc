@@ -1,3 +1,5 @@
 [shell_alias]
 
 rebash = "exec $SHELL"
+ll = "ls -lh"
+gst = "git status"
