@@ -1,3 +1,5 @@
+local HOMERC_DIR="$HOME/.homerc/common"
+
 # Enable persistent history
 HISTFILE=~/.zsh_history
 HISTSIZE=100000
@@ -26,5 +28,6 @@ eval "$(mise activate zsh)"
 source <(fzf --zsh)
 
 # Set up the Starship prompt
+export STARSHIP_CONFIG=$HOMERC_DIR/starship.toml
 eval "$(starship init zsh)"
 
